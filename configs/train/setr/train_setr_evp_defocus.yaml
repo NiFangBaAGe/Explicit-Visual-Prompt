@@ -1,0 +1,66 @@
+train_dataset:
+  dataset:
+    name: paired-image-folders
+    args:
+      root_path_1: ./load/defocus_dataset/train_data/1204source
+      root_path_2: ./load/defocus_dataset/train_data/1204gt
+      cache: none
+      split_key: train
+  wrapper:
+    name: train
+    args:
+      inp_size: 320
+
+      augment: false
+  batch_size: 4
+
+val_dataset:
+  dataset:
+    name: paired-image-folders
+    args:
+      root_path_1: ./load/defocus_dataset/test_data/CUHK/xu100-source
+      root_path_2: ./load/defocus_dataset/test_data/CUHK/xu100-gt
+      cache: none
+      split_key: test
+  wrapper:
+    name: val
+    args:
+
+      inp_size: 320
+  batch_size: 4
+
+eval_type: fmeasure
+
+data_norm:
+  inp: {sub: [0.5], div: [0.5]}
+  gt: {sub: [0.5], div: [0.5]}
+  gt_rgb: {sub: [0.5], div: [0.5]}
+
+model:
+  name: setr
+  args:
+    inp_size: 320
+    loss: bce
+    encoder_mode:
+      name: evp
+      scale_factor: 32
+      input_type: fft
+      freq_nums: 0.25
+      prompt_type: highpass
+      tuning_stage: 1234
+      handcrafted_tune: true
+      embedding_tune: true
+      adaptor: adaptor
+
+
+optimizer:
+  name: adamw
+  args:
+    lr: 2.e-4
+epoch_max: 50
+multi_step_lr:
+  milestones: [1]
+  gamma: 0.1
+
+epoch_val: 1
+epoch_save: 1

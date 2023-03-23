@@ -1,0 +1,59 @@
+train_dataset:
+  dataset:
+    name: paired-image-folders
+    args:
+      root_path_1: ./load/train/train_A
+      root_path_2: ./load/train/train_B
+      cache: none
+      split_key: train
+  wrapper:
+    name: train
+    args:
+      inp_size: 400
+
+      augment: false
+  batch_size: 4
+
+val_dataset:
+  dataset:
+    name: paired-image-folders
+    args:
+      root_path_1: ./load/test/test_A
+      root_path_2: ./load/test/test_B
+      cache: none
+      split_key: test
+  wrapper:
+    name: val
+    args:
+
+      inp_size: 400
+  batch_size: 1
+
+eval_type: ber
+
+data_norm:
+  inp: {sub: [0.5], div: [0.5]}
+  gt: {sub: [0.5], div: [0.5]}
+  gt_rgb: {sub: [0.5], div: [0.5]}
+
+model:
+  name: setr
+  args:
+    inp_size: 400
+    loss: bbce
+    encoder_mode:
+      name: full
+      att: none
+
+
+optimizer:
+  name: adamw
+  args:
+    lr: 5.e-4
+epoch_max: 50
+multi_step_lr:
+  milestones: [1]
+  gamma: 0.1
+
+epoch_val: 1
+epoch_save: 1

@@ -1,0 +1,66 @@
+train_dataset:
+  dataset:
+    name: paired-image-folders
+    args:
+      root_path_1: ./load/SBU-shadow/SBU-shadow/SBUTrain4KRecoveredSmall/ShadowImages
+      root_path_2: ./load/SBU-shadow/SBU-shadow/SBUTrain4KRecoveredSmall/ShadowMasks
+      cache: none
+      split_key: train
+  wrapper:
+    name: train
+    args:
+      inp_size: 400
+
+      augment: false
+  batch_size: 4
+
+val_dataset:
+  dataset:
+    name: paired-image-folders
+    args:
+      root_path_1: ./load/SBU-shadow/SBU-shadow/SBU-Test/ShadowImages
+      root_path_2: ./load/SBU-shadow/SBU-shadow/SBU-Test/ShadowMasks
+      cache: none
+      split_key: test
+  wrapper:
+    name: val
+    args:
+
+      inp_size: 400
+  batch_size: 1
+
+eval_type: ber
+
+data_norm:
+  inp: {sub: [0.5], div: [0.5]}
+  gt: {sub: [0.5], div: [0.5]}
+  gt_rgb: {sub: [0.5], div: [0.5]}
+
+model:
+  name: segformer
+  args:
+    inp_size: 400
+    loss: bbce
+    encoder_mode:
+      name: evp
+      scale_factor: 4
+      input_type: fft
+      freq_nums: 0.25
+      prompt_type: highpass
+      tuning_stage: 1234
+      handcrafted_tune: true
+      embedding_tune: true
+      adaptor: adaptor
+
+
+optimizer:
+  name: adamw
+  args:
+    lr: 5.e-4
+epoch_max: 50
+multi_step_lr:
+  milestones: [1]
+  gamma: 0.1
+
+epoch_val: 1
+epoch_save: 1

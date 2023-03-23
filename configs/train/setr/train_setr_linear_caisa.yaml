@@ -1,0 +1,59 @@
+train_dataset:
+  dataset:
+    name: paired-image-folders
+    args:
+      root_path_1: ./load/caisa/train_image
+      root_path_2: ./load/caisa/train_mask
+      cache: none
+      split_key: train
+  wrapper:
+    name: train
+    args:
+      inp_size: 256
+
+      augment: false
+  batch_size: 4
+
+val_dataset:
+  dataset:
+    name: paired-image-folders
+    args:
+      root_path_1: ./load/caisa/test_image
+      root_path_2: ./load/caisa/test_mask
+      cache: none
+      split_key: test
+  wrapper:
+    name: val
+    args:
+
+      inp_size: 256
+  batch_size: 4
+
+eval_type: f1
+
+data_norm:
+  inp: {sub: [0.5], div: [0.5]}
+  gt: {sub: [0.5], div: [0.5]}
+  gt_rgb: {sub: [0.5], div: [0.5]}
+
+model:
+  name: setr
+  args:
+    inp_size: 256
+    loss: bce
+    encoder_mode:
+      name: linear
+      att: none
+
+
+optimizer:
+  name: adamw
+  args:
+    lr: 5.e-4
+epoch_max: 50
+multi_step_lr:
+  milestones: [1]
+  gamma: 0.1
+
+epoch_val: 1
+epoch_save: 1

@@ -1,0 +1,59 @@
+train_dataset:
+  dataset:
+    name: paired-image-folders
+    args:
+      root_path_1: ./load/COD_Dataset/TrainDataset/Imgs
+      root_path_2: ./load/COD_Dataset/TrainDataset/GT
+      cache: none
+      split_key: train
+  wrapper:
+    name: train
+    args:
+      inp_size: 352
+
+      augment: false
+  batch_size: 4
+
+val_dataset:
+  dataset:
+    name: paired-image-folders
+    args:
+      root_path_1: ./load/COD_Dataset/TestDataset/CAMO/Imgs
+      root_path_2: ./load/COD_Dataset/TestDataset/CAMO/GT
+      cache: none
+      split_key: test
+  wrapper:
+    name: val
+    args:
+
+      inp_size: 352
+  batch_size: 4
+
+eval_type: cod
+
+data_norm:
+  inp: {sub: [0.5], div: [0.5]}
+  gt: {sub: [0.5], div: [0.5]}
+  gt_rgb: {sub: [0.5], div: [0.5]}
+
+model:
+  name: setr
+  args:
+    inp_size: 352
+    loss: iou
+    encoder_mode:
+      name: adaptformer
+      att: none
+
+
+optimizer:
+  name: adamw
+  args:
+    lr: 2.e-4
+epoch_max: 20
+multi_step_lr:
+  milestones: [1]
+  gamma: 0.1
+
+epoch_val: 1
+epoch_save: 1

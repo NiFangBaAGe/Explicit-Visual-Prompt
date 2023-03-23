@@ -1,0 +1,15 @@
+model:
+  name: segformer
+  args:
+    inp_size: 256
+    loss: bce
+    encoder_mode:
+      name: evp
+      scale_factor: 4
+      input_type: fft
+      freq_nums: 0.25
+      prompt_type: highpass
+      tuning_stage: 1234
+      handcrafted_tune: true
+      embedding_tune: true
+      adaptor: adaptor

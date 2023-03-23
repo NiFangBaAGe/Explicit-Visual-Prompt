@@ -1,0 +1,45 @@
+test_dataset:
+  dataset:
+    name: paired-image-folders
+    args:
+      root_path_1: ./load/target_domain/IMD2020_test/img
+      root_path_2: ./load/target_domain/IMD2020_test/mask
+#      root_path_1: ./load/target_domain/columbia/image
+#      root_path_2: ./load/target_domain/columbia/mask
+#      root_path_1: ./load/target_domain/coverage/image
+#      root_path_2: ./load/target_domain/coverage/mask
+#      root_path_1: ./load/target_domain/nist16/image
+#      root_path_2: ./load/target_domain/nist16/mask
+#      root_path_1: ./load/target_domain/caisa/test_image
+#      root_path_2: ./load/target_domain/caisa/test_mask
+      cache: none
+      split_key: test
+      size: 256
+  wrapper:
+    name: val
+    args:
+
+      inp_size: 256
+  batch_size: 4
+
+eval_type: f1
+data_norm:
+  inp: {sub: [0.5], div: [0.5]}
+  gt: {sub: [0.5], div: [0.5]}
+
+
+model:
+  name: segformer
+  args:
+    inp_size: 256
+    loss: bce
+    encoder_mode:
+      name: evp
+      scale_factor: 4
+      input_type: fft
+      freq_nums: 0.25
+      prompt_type: highpass
+      tuning_stage: 1234
+      handcrafted_tune: true
+      embedding_tune: true
+      adaptor: adaptor
