@@ -1,27 +1,12 @@
-<div align="center">
+## [CVPR 2023] Explicit Visual Prompting for Low-Level Structure Segmentations
+ 
+[Weihuang Liu](https://chenyangqiqi.github.io/), [Xi Shen](https://xishen0220.github.io/), [Chi-Man Pun](https://www.cis.um.edu.mo/~cmpun/), and [Xiaodong Cun](https://vinthony.github.io/)
 
-<h3> Explicit Visual Prompting for Low-Level Structure Segmentations
- </h3> 
- <br/>
-  <a href='https://arxiv.org/abs/2303.10883'><img src='https://img.shields.io/badge/ArXiv-2303.08524-red' /></a> 
+University of Macau and Tencent AI Lab &emsp;
+
+<a href='https://arxiv.org/abs/2303.10883'><img src='https://img.shields.io/badge/ArXiv-2303.08524-red' /></a> 
   <a href='https://nifangbaage.github.io/Explicit-Visual-Prompt/'><img src='https://img.shields.io/badge/Project-Page-Green'></a>
-  <br/>
-  <br/>
-<div>
-    <a target='_blank'>Weihuang Liu <sup> 1</sup> </a>&emsp;
-    <a href='https://xishen0220.github.io/' target='_blank'>Xi Shen <sup> 2</sup></a>&emsp;
-    <a href='https://www.cis.um.edu.mo/~cmpun/' target='_blank'>Chi-Man Pun <sup>*,1</sup></a>&emsp;
-    <a href='https://vinthony.github.io/' target='_blank'>Xiaodong Cun <sup>*,2</sup></a>&emsp;
-</div>
-<br>
-<div>
-    <sup>1</sup> University of Macau &emsp; <sup>2</sup> Tencent AI Lab &emsp; 
-</div>
-<br>
-<i><strong><a href='https://arxiv.org/abs/2303.10883' target='_blank'>CVPR 2023</a></strong></i>
-<br>
-<br>
-</div>
+ 
 
 ## Abstract
 > We consider the generic problem of detecting low-level structures in images, which includes segmenting the manipulated parts, identifying out-of-focus pixels, separating shadow regions, and detecting concealed objects.
