@@ -1,6 +1,6 @@
 ## [CVPR 23] Explicit Visual Prompting for Low-Level Structure Segmentations
  
-[Weihuang Liu](https://chenyangqiqi.github.io/), [Xi Shen](https://xishen0220.github.io/), [Chi-Man Pun](https://www.cis.um.edu.mo/~cmpun/), and [Xiaodong Cun](https://vinthony.github.io/) by University of Macau and Tencent AI Lab.
+Weihuang Liu, [Xi Shen](https://xishen0220.github.io/), [Chi-Man Pun](https://www.cis.um.edu.mo/~cmpun/), and [Xiaodong Cun](https://vinthony.github.io/) by University of Macau and Tencent AI Lab.
 
 <a href='https://arxiv.org/abs/2303.10883'><img src='https://img.shields.io/badge/ArXiv-2303.08524-red' /></a> 
   <a href='https://nifangbaage.github.io/Explicit-Visual-Prompt/'><img src='https://img.shields.io/badge/Project-Page-Green'></a>
