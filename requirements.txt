@@ -21,7 +21,7 @@ tensorboardX==2.6
 terminaltables==3.1.10
 thop==0.1.1.post2209072238
 timm==0.3.2
-torch==1.8.1+cu101
+torch==1.4.0+cu92
 torch_dct==0.1.5
 torchsummary==1.5.1
 torchvision==0.9.1+cu101
