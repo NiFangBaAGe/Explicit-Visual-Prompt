@@ -7,7 +7,7 @@ Weihuang Liu, [Xi Shen](https://xishen0220.github.io/), [Chi-Man Pun](https://ww
  
 
 ## 🔥 News
-The extension work of [Explicit Visual Prompting for Universal Foreground Segmentations](https://arxiv.org/abs/2305.18476) is realised. The codes, models, and results can be found in this repository.
+The extension work of [Explicit Visual Prompting for Universal Foreground Segmentations](https://arxiv.org/abs/2305.18476) is released. The codes, models, and results can be found in this repository.
 
 ## Abstract
 > We consider the generic problem of detecting low-level structures in images, which includes segmenting the manipulated parts, identifying out-of-focus pixels, separating shadow regions, and detecting concealed objects.
