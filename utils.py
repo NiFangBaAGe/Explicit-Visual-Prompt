@@ -118,7 +118,46 @@ def make_coord(shape, ranges=None, flatten=True):
 
     return ret
 
+def calc_sod(y_pred, y_true):
+    batchsize = y_true.shape[0]
 
+    metric_FM = sod_metric.Fmeasure()
+    metric_WFM = sod_metric.WeightedFmeasure()
+    metric_SM = sod_metric.Smeasure()
+    metric_EM = sod_metric.Emeasure()
+    metric_MAE = sod_metric.MAE()
+    
+    with torch.no_grad():
+        assert y_pred.shape == y_true.shape
+        f_max = 0
+        for i in range(batchsize):
+            true = y_true[i]
+            pred = y_pred[i]
+
+            pred = (pred - torch.min(pred)) / (torch.max(pred) - torch.min(pred) + 1e-20)
+            gt = true
+
+            prec, recall = _eval_pr(pred, gt, 255)
+            f_score = (1 + 0.3) * prec * recall / (0.3 * prec + recall)
+            f_score[f_score != f_score] = 0  # for Nan
+            f_max += f_score.max()
+
+            true, pred = \
+                y_true[i, 0].cpu().data.numpy() * 255, y_pred[i, 0].cpu().data.numpy() * 255
+
+            metric_FM.step(pred=pred, gt=true)
+            metric_WFM.step(pred=pred, gt=true)
+            metric_SM.step(pred=pred, gt=true)
+            metric_EM.step(pred=pred, gt=true)
+            metric_MAE.step(pred=pred, gt=true)
+
+        fm = metric_FM.get_results()["fm"]["adp"]
+        wfm = metric_WFM.get_results()["wfm"]
+        sm = metric_SM.get_results()["sm"]
+        em = metric_EM.get_results()["em"]["curve"].mean()
+        mae = metric_MAE.get_results()["mae"]
+
+    return f_max/batchsize, mae, sm, em
 
 def calc_cod(y_pred, y_true):
     batchsize = y_true.shape[0]
