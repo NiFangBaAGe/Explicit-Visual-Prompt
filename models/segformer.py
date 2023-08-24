@@ -71,6 +71,15 @@ class SegFormer(nn.Module):
                 type=BACKBONES.get('mit_b4_vpt'),
                 img_size=inp_size,
                 prompt_cfg=encoder_mode['name'],)
+        elif encoder_mode['name'] == 'fp':
+            backbone = dict(
+                type=BACKBONES.get('mit_b4_fp'),
+                img_size=inp_size,
+                scale_factor=encoder_mode['scale_factor'],
+                tuning_stage=encoder_mode['tuning_stage'],
+                frequency_tune=encoder_mode['frequency_tune'],
+                embedding_tune=encoder_mode['embedding_tune'],
+                adaptor=encoder_mode['adaptor'])
         elif encoder_mode['name'] == 'evp':
             backbone = dict(
                 type=BACKBONES.get('mit_b4_evp'),
