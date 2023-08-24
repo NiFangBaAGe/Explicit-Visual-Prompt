@@ -64,6 +64,9 @@ def eval_psnr(loader, model, data_norm=None, eval_type=None, eval_bsize=None,
     elif eval_type == 'cod':
         metric_fn = utils.calc_cod
         metric1, metric2, metric3, metric4 = 'sm', 'em', 'wfm', 'mae'
+    elif eval_type == 'sod':
+        metric_fn = utils.calc_sod
+        metric1, metric2, metric3, metric4 = 'f_max', 'mae', 's_max', 'e_max'
 
     val_metric1 = utils.Averager()
     val_metric2 = utils.Averager()
