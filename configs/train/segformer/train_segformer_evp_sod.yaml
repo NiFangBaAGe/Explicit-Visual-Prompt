@@ -30,7 +30,7 @@ val_dataset:
   batch_size: 4
 
 
-eval_type: cod
+eval_type: sod
 
 data_norm:
   inp: {sub: [0.5], div: [0.5]}
