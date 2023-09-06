@@ -63,7 +63,7 @@ if __name__ == '__main__':
     img = img.cuda()
 
     pred = model.encoder.forward_dummy(img.unsqueeze(0))
-    pred = torch.sigmoid(pred).view(1, h, w).cpu()
+    pred = torch.sigmoid(pred).view(1, w, h).cpu()
 
     transforms.ToPILImage()(pred).save(args.output)
 
