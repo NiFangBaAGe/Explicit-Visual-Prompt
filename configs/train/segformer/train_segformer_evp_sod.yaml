@@ -58,7 +58,7 @@ optimizer:
   name: adamw
   args:
     lr: 2.e-4
-epoch_max: 20
+epoch_max: 50
 multi_step_lr:
   milestones: [1]
   gamma: 0.1
