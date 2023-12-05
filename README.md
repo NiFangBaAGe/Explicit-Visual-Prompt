@@ -82,7 +82,7 @@ python test.py --config [CONFIG_PATH] --model [MODEL_PATH] --prompt [PROMPT_PATH
 
 ## Models and Results
 
-Please find the pre-trained models and results [here](https://uofmacau-my.sharepoint.com/:f:/g/personal/mc05379_umac_mo/EneRfHlTuPZCjH-VVBZVQpMBFXqqdRdU6l8a31jo3i5GOA?e=zagGg1).
+Please find the pre-trained models and results [here](https://drive.google.com/drive/folders/1dt24hFhLTa-C4gdbZbGo0kdZA_OYaDMS?usp=sharing).
 
 
 ## Dataset
